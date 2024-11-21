@@ -29,6 +29,12 @@ public class User extends Timestamped {
         this.userRole = userRole;
     }
 
+    private User(Long id, String email, UserRole userRole) {
+        this.id = id;
+        this.email = email;
+        this.userRole = userRole;
+    }
+
     private User(Long id, String email, UserRole userRole, String nickname) {
         this.id = id;
         this.email = email;
@@ -37,7 +43,7 @@ public class User extends Timestamped {
     }
 
     public static User fromAuthUser(AuthUser authUser) {
-        return new User(authUser.getId(), authUser.getEmail(), authUser.getUserRole(), authUser.getNickname());
+        return new User(authUser.getId(), authUser.getEmail(), authUser.getUserRole());
     }
 
     public void changePassword(String password) {
